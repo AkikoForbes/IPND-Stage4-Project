@@ -8,12 +8,11 @@
 {% endif %}
 <table>
 	<caption>Feedbacks</caption>
-	<tr><th>Name</th><th>Date&amp;Time</th><th>Comment</th></tr>
+	<tr><th>Name</th><th>Comment</th></tr>
 	{% if feedback_list %}
 		{% for feedback in feedback_list %}
 			<tr>
 				<td>{{feedback.user_name}}</td>
-				<td>{{feedback.date}}</td>
 				<td>{{feedback.user_comment}}</td>
 			</tr>
 		{% endfor %}

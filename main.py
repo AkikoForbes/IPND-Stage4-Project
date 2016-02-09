@@ -38,6 +38,7 @@ class Handler(webapp2.RequestHandler):
 class Feedback(ndb.Model):
 	"""A main model for representing an individual Guestbook entry."""
 	user_name = ndb.StringProperty()
+	# rating = ndb.IntegerProperty(indexed=False)
 	user_comment = ndb.StringProperty(indexed=False)
 	date = ndb.DateTimeProperty(auto_now_add=True)
 
@@ -48,6 +49,13 @@ class MainPage(Handler):
 
 
 class LessonNotes(Handler):
+	# """ Write lesson notes to a HTML template with a feedback form """
+	# def write_form(self, notification="", user_comment="", user_name=""):
+	# 	self.redirect("/lessonnotes?notification=%s&user_comment=%s&user_name" %
+	# 				{"notificaton":notificaton,
+	# 				 "user_comment":user_comment,
+	# 				 "user_name":user_name})
+
 	def escape_html(s):
 		return cgi.escape(s, quote = True)
 
@@ -62,19 +70,17 @@ class LessonNotes(Handler):
 					concepts_order=concepts_order)
 
 	def post(self):
-		user_name = self.request.get("user_name")
 		user_comment = self.request.get("user_comment")
+		user_name = self.request.get("user_name")
 
-		# If there's invalid user input, error message will show up.
-		error = "Sorry, your input doesn't seem valid. Please make sure to fill in both comment and name sections."
+		# Message texts for notifications.
+		error = "Sorry, your input doesn't look valid & please make sure to fill in both comment and name sections."
 
-		blanks = user_comment.isspace()
+		if not (user_name and user_comment):
+			self.redirect("/lessonnotes?error=%s" % error)
 
-		if not user_comment and blanks:
-			self.request.get("error")
-
-		else:
-			self.redirect("/feedback")
+		# else:
+		# 	self.redirect("/feedback")
 
 
 class FeedbackPage(Handler):
@@ -95,8 +101,8 @@ class FeedbackPage(Handler):
 					notification=notification)
 
 	def post(self):
-		user_name = self.request.get("user_name")
-		user_comment = self.request.get("user_comment")
+		user_name = self.request.get("user_name", "")
+		user_comment = self.request.get("user_comment", "")
 
 		#success message text for notification
 		success = "Thank you for your feedback!"
