@@ -1,0 +1,204 @@
+* {
+	-webkit-box-sizing: border-box; 
+ 	-moz-box-sizing: border-box; 
+ 	-ms-box-sizing: border-box; 
+ 	box-sizing: border-box; 
+} 
+
+/*Use the code blow to visualize the boxes and the HTML structure when you check your code.*/
+
+/** {
+	margin: 4px;
+	border: red solid 2px;
+	background-color: rgba(0,0,0,0.15);
+}
+*/
+ 
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 22px;
+    background-color:#556;
+    background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a), 
+    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+    background-size:80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+header, .unit, a {
+    background-color : #4c2827;
+    opacity: 0.95;
+}
+
+header {
+    color: #f0f8ff;
+    padding-bottom: 20px;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+h1 {
+    margin: 0 auto;
+}
+
+.links a {
+    background-color: #ddd;
+    font-size: 0.7em;
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.introduction {
+    background-color: #ffd3d8;
+    color: #18191a;
+    border-radius: 10px;
+    margin: 10px;
+    border-style: double;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.introduction a {
+    background-color: #ffd3d8;
+    color: #18191a;   
+}
+
+.link-to-lessonnotes {
+    color: #003366;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+form, table, blockquote {
+    background-color : #ffffff;
+    opacity: 0.9;
+}
+
+form {
+    margin-top: 10px;
+    font-family: consolas;
+}
+
+legend {
+    font-style: italic;
+    font-weight: bolder;
+}
+
+#error {
+    color: #ff0000;
+}
+
+/*#success {
+    color: #000066;
+}
+*/
+blockquote {
+    margin: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    position: relative;
+    padding: 15px 15px;
+/*    margin: 1em 0 3em;*/
+    border: 10px solid #dd3355;
+    text-align: center;
+    color: #333;
+    border-radius: 20px;
+}
+
+blockquote:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 15px;
+    height: 0;
+    width: 0;
+    border: 18px solid transparent;
+    border-top: 10px solid #dd3355;
+    border-right: 18px solid #dd3355;
+}
+
+table {
+    display: table;
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+caption {
+    font-style: italic;
+    font-weight: bolder;
+    float: left;
+}
+
+th, td {
+    border:solid 1px;
+}
+
+
+td {
+    padding: 0.5em;
+}
+
+.unit {
+    background-color : #4c2827;
+    color: #f0f8ff;
+    padding-bottom: 10px;
+}
+
+.unit h2 {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    border-left-width: 20px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.concept {
+    background-color: #ffd3d8;
+    color: #18191a;
+    border-radius: 10px;
+    margin: 10px;
+    padding-left: 10px;
+}
+
+h3 {
+    color: #3d271f;
+    font-size: 25px;
+    margin: 8px;
+    font-weight: bold;
+}
+
+.concept-description {
+    margin: 10px;
+    padding-bottom: 5px;
+}
+
+.container {
+    margin-right: 10px;
+    padding-bottom: 10px; 
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+footer {
+    background-color: #ddd;
+    text-align: center;
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 15px;
+}

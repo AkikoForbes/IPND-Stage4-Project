@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if notification %}
+	<blockquote>
+		<span class="notification" id="success">{{notification}}</span>
+	</blockquote>
+{% endif %}
+<table>
+	<caption>Feedbacks</caption>
+	<tr><th>Name</th><th>Comment</th></tr>
+	{% if feedback_list %}
+		{% for feedback in feedback_list %}
+			<tr>
+				<td>{{feedback.user_name}}</td>
+				<td>{{feedback.user_comment}}</td>
+			</tr>
+		{% endfor %}
+	{% endif %}
+</table>
+{% endblock %}

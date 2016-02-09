@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<form id="form_comment" method="post" action="/feedback">
+		<fieldset>
+			<legend>Your Feedback</legend>
+			After reading my lesson notes, please leave your comment here. I would love to hear what you think about my website:)
+			<br>
+			<div>
+				Your comment:<br>
+				<textarea id="input_comment" name="user_comment" rows="3" cols="60"></textarea>
+			</div>
+			<div>
+				Name:<input id="input_name" name="user_name">
+			</div>
+			<div><input type="submit" value="Submit"></div>
+			<span class="notification" id="error">{{notification}}</span>
+		</fieldset>
+	</form>
+	// <script>
+	// if(!input_name.value){
+	// 	input_name.value = localStorage.input_name || ""
+	// }
+
+	// function oninput(){
+	// 	//save the text the user typed in to localStorage
+	// 	localStorage.input_name = input_name.value
+	// }
+
+	// function onsubmit(){
+	// 	if(input_comment.value && input_name.value){
+	// 		localStorage.input_name = ""
+	// 	}
+	// }
+
+	// input_name.oninput = oninput
+	// form_comment.onsubmit = onsubmit 
+	
+
+	// </script>
+
+
+	{% if all_notes %}
+		{% for unit in all_notes %}
+		<div class="unit">
+			<h2>{{unit["unit_title"]}}</h2>
+			{% for concept in concepts_order %}
+				{% if unit["concepts"].has_key(concept) %}
+				<div class="concept">
+						<div class="concept-title">
+							<h3>{{unit["concepts"][concept]["concept_title"]}}</h3>
+						</div>
+						<div class="concept-description">
+							{% if unit["concepts"][concept]["concept_description"]["html_list"]%}
+							<p>
+								{{unit["concepts"][concept]["concept_description"]["description"]}}
+							</p>
+							<ol>
+								{% for item in unit["concepts"][concept]["concept_description"]["html_list"] %}
+								<li>{{item}}</li>
+								{% endfor %}
+							</ol>
+							{% else %}
+								{{unit["concepts"][concept]["concept_description"]}}
+							{% endif %}
+						</div>
+						{% if unit["concepts"][concept]["image"] %}
+						<div class="container">
+							<img src='{{unit["concepts"][concept]["image"]}}'>
+						</div>
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+		{% endfor %}
+	{% endif %}
+	<div class="links">
+		<a href="/lessonnotes#pagetop">Back to top</a>
+	</div>
+
+{% endblock %}
