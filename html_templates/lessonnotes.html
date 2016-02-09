@@ -15,7 +15,10 @@
 				Name:<input id="input_name" name="user_name">
 			</div>
 			<div><input type="submit" value="Submit"></div>
-			<span class="notification" id="error">{{notification}}</span>
+
+			{% if error %}
+			<span class="notification" id="error">{{error}}</span>
+			{% endif %}
 		</fieldset>
 	</form>
 	// <script>
