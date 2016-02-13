@@ -55,7 +55,7 @@ class LessonNotes(Handler):
 		# Calling data of my lesson notes from mynotes.py
 		all_notes = mynotes.all_notes
 		concepts_order = mynotes.concepts_order
-		notification = ""
+		notification = self.request.get("notification")
 
 		# Render the data into the template "lessonnotes.html"
 		self.render("lessonnotes.html",
@@ -78,10 +78,10 @@ class LessonNotes(Handler):
 			self.redirect("/feedback")
 
 	def is_valid(user_input):
-		blanks = user_input.isspace()
-		if blanks:
-			return user_input
-
+		if user_input.strip():
+			return True
+		else:
+			return False
 
 
 class FeedbackPage(Handler):
