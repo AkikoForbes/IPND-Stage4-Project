@@ -55,33 +55,37 @@ class LessonNotes(Handler):
 		# Calling data of my lesson notes from mynotes.py
 		all_notes = mynotes.all_notes
 		concepts_order = mynotes.concepts_order
-		notification = self.request.get("notification")
+		error = self.request.get("error", )
 
 		# Render the data into the template "lessonnotes.html"
 		self.render("lessonnotes.html",
 					all_notes=all_notes,
 					concepts_order=concepts_order,
-					notification=notification)
+					error=error)
 
 	def post(self):
 		user_name = self.request.get("user_name")
 		user_comment = self.request.get("user_comment")
 
 		# If there's invalid user input, error message will show up.
-		error = "Sorry, your input doesn't seem valid. Please make sure to fill in both comment and name sections."
+		error = "Sorry, your input doesn't seem valid. Please try again."
+
+		valid_comment = is_valid(user_comment)
 
 
-		if not is_valid(user_comment):
-			self.redirect("/lessonnotes?notification=%s" % error)
+		if not valid_comment:
+			self.redirect("/lessonnotes?error=%s" % error)
 
-		else:
-			self.redirect("/feedback")
+		# else:
+		# 	self.redirect("/feedback")
 
-	def is_valid(user_input):
-		if user_input.strip():
-			return True
-		else:
-			return False
+
+def is_valid(user_input):
+	if user_input.strip():
+		return True
+	else:
+		return False
+
 
 
 class FeedbackPage(Handler):
@@ -95,18 +99,18 @@ class FeedbackPage(Handler):
 		feedback_list = feedback_query.fetch(maximum_fetch_size)
 		# [END query]
 
-		notification = self.request.get("notification", "")
+		success = self.request.get("success", "")
 
 		self.render("feedback.html",
 					feedback_list=feedback_list,
-					notification=notification)
+					success=success)
 
 	def post(self):
 		user_name = self.request.get("user_name")
 		user_comment = self.request.get("user_comment")
 
 		#success message text for notification
-		success = "Thank you for your feedback!"
+		success = "Thank you so much for your feedback!"
 
 		post = Feedback(user_name=user_name, user_comment=user_comment)
 		post.put()
@@ -115,7 +119,7 @@ class FeedbackPage(Handler):
 		import time
 		time.sleep(.1)
 
-		self.redirect("/feedback?notification=%s" % success)
+		self.redirect("/feedback?success=%s" % success)
 
 
 
