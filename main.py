@@ -55,29 +55,33 @@ class LessonNotes(Handler):
 		# Calling data of my lesson notes from mynotes.py
 		all_notes = mynotes.all_notes
 		concepts_order = mynotes.concepts_order
-		error = self.request.get("error", )
+		error = self.request.get("error", "")
+		redirection = self.request.get("redirection", "")
 
 		# Render the data into the template "lessonnotes.html"
 		self.render("lessonnotes.html",
 					all_notes=all_notes,
 					concepts_order=concepts_order,
-					error=error)
+					error=error,
+					redirection=redirection)
 
 	def post(self):
 		user_name = self.request.get("user_name")
 		user_comment = self.request.get("user_comment")
 
-		# If there's invalid user input, error message will show up.
+		# Notifications for a valid or invalid input.
 		error = "Sorry, your input doesn't seem valid. Please try again."
 
 		valid_comment = is_valid(user_comment)
 
-
 		if not valid_comment:
 			self.redirect("/lessonnotes?error=%s" % error)
 
-		# else:
-		# 	self.redirect("/feedback")
+		else:
+			redirection = self.request.get("redirection", "/feedback")
+			self.render("lessonnotes.html", redirection=redirection)
+
+
 
 
 def is_valid(user_input):
@@ -85,7 +89,6 @@ def is_valid(user_input):
 		return True
 	else:
 		return False
-
 
 
 class FeedbackPage(Handler):
@@ -109,7 +112,6 @@ class FeedbackPage(Handler):
 		user_name = self.request.get("user_name")
 		user_comment = self.request.get("user_comment")
 
-		#success message text for notification
 		success = "Thank you so much for your feedback!"
 
 		post = Feedback(user_name=user_name, user_comment=user_comment)
@@ -120,6 +122,7 @@ class FeedbackPage(Handler):
 		time.sleep(.1)
 
 		self.redirect("/feedback?success=%s" % success)
+
 
 
 
