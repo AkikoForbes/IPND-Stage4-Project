@@ -48,9 +48,6 @@ class MainPage(Handler):
 
 
 class LessonNotes(Handler):
-	def escape_html(s):
-		return cgi.escape(s, quote = True)
-
 	def get(self):
 		# Calling data of my lesson notes from mynotes.py
 		all_notes = mynotes.all_notes
@@ -61,37 +58,14 @@ class LessonNotes(Handler):
 		# Render the data into the template "lessonnotes.html"
 		self.render("lessonnotes.html",
 					all_notes=all_notes,
-					concepts_order=concepts_order,
-					error=error,
-					redirection=redirection)
+					concepts_order=concepts_order)
 
-	def post(self):
-		user_name = self.request.get("user_name")
-		user_comment = self.request.get("user_comment")
-
-		# Notifications for a valid or invalid input.
-		error = "Sorry, your input doesn't seem valid. Please try again."
-
-		valid_comment = is_valid(user_comment)
-
-		if not valid_comment:
-			self.redirect("/lessonnotes?error=%s" % error)
-
-		else:
-			redirection = self.request.get("redirection", "/feedback")
-			self.render("lessonnotes.html", redirection=redirection)
-
-
-
-
-def is_valid(user_input):
-	if user_input.strip():
-		return True
-	else:
-		return False
 
 
 class FeedbackPage(Handler):
+	def escape_html(s):
+		return cgi.escape(s, quote = True)
+
 	def get(self):
 		# [START query]
 		# Query the Datastore and order earliest date first
@@ -102,26 +76,43 @@ class FeedbackPage(Handler):
 		feedback_list = feedback_query.fetch(maximum_fetch_size)
 		# [END query]
 
+		error = self.request.get("error", "")
 		success = self.request.get("success", "")
 
 		self.render("feedback.html",
 					feedback_list=feedback_list,
-					success=success)
+					success=success,
+					error=error)
 
 	def post(self):
 		user_name = self.request.get("user_name")
 		user_comment = self.request.get("user_comment")
 
+		# Notifications for a valid or invalid input.
+		error = "Sorry, your input doesn't seem valid. Please try again."
 		success = "Thank you so much for your feedback!"
 
-		post = Feedback(user_name=user_name, user_comment=user_comment)
-		post.put()
+		valid_comment = is_valid(user_comment)
 
-		# For local development. Wait a little bit for the local Datastore to update.
-		import time
-		time.sleep(.1)
+		if not valid_comment:
+			self.redirect("/feedback?error=%s" % error)
 
-		self.redirect("/feedback?success=%s" % success)
+		else:
+			post = Feedback(user_name=user_name, user_comment=user_comment)
+			post.put()
+
+			# For local development. Wait a little bit for the local Datastore to update.
+			import time
+			time.sleep(.1)
+
+			self.redirect("/feedback?success=%s" % success)
+
+
+def is_valid(user_input):
+	if user_input.strip():
+		return True
+	else:
+		return False
 
 
 

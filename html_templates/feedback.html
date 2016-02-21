@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+	<form id="form_comment" method="post">
+		<fieldset>
+			<legend>Your Feedback</legend>
+			After reading my lesson notes, please leave your comment here. I would love to hear what you think about my website:)
+			<br>
+			<div>
+				Your comment:<br>
+				<textarea id="input_comment" name="user_comment" rows="3" cols="60"></textarea>
+			</div>
+			<div>
+				Name:<input id="input_name" name="user_name">
+			</div>
+			<div><input type="submit" value="Submit"></div>
+			{% if error %}
+			<span class="notification" id="error">{{error}}</span>
+			{% endif %}
+		</fieldset>
+	</form>
+
 {% if success %}
 	<blockquote>
 		<span class="notification" id="success">{{success}}</span>
