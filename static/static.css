@@ -162,7 +162,6 @@ td {
     margin-bottom: 0px;
     border-left-width: 20px;
     padding-left: 10px;
-    text-align: center;
 }
 
 .concept {
@@ -178,6 +177,7 @@ h3 {
     font-size: 25px;
     margin: 8px;
     font-weight: bold;
+    text-align: center;
 }
 
 .concept-description {

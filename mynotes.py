@@ -12,24 +12,44 @@ Notes which demonstrate an understanding of:
 
 
 unit1 = {
-	"unit_title": "How Servers Work",
+	"unit_title": "Unit 4.1: Introduction to Networks",
 	"concepts": {
 		"concept1": {
-			"concept_title": "Client and Server",
-			"concept_description": "Your computer(= Client) is connected to a server through a network called the Internet. When your browser requests a page, the server sends back the requested page.",
-			"image": "http://i.imgur.com/0vPATU6.png" 
+			"concept_title": "Networks",
+			"concept_description": "Networks have at least 3 entities and every entity can communicate even with indirectly connected entities." 
 		},
 		"concept2": {
+			"concept_title": "Latency & Bandwidth",
+			"concept_description": {
+				"description": "There are two main way to measure networks.",
+				"html_list": [
+					"Latency: a duration of a message sent from its source to its destination",
+					"Bandwidth: an amount of information that can be transmitted per unit time"
+				]
+			}
+		},
+		"concept3": {
+			"concept_title": "Client / Server / Protocol",
+			"concept_description": "Your computer(= Client) is connected to a server through a network called the Internet. When your browser requests a page, the server sends back the requested page. For the web, a protocol gives rules about how a client and a server talk to each other (Hypertext Transfer Protocol(HTTP)).",
+			"image": "http://i.imgur.com/0vPATU6.png" 
+		}
+	}
+}
+
+unit2 = {
+	"unit_title": "Unit 4.2: Make the Internet Work For You",
+	"concepts": {
+		"concept1": {
 			"concept_title": "URL",
 			"concept_description": "URL is abbreviation of Uniform Resource Locator.",
 			"image": "http://i.imgur.com/vdwt3eC.png"
 		},
-		"concept3": {
+		"concept2": {
 			"concept_title": "GET vs POST",
 			"concept_description": "Requests which are sent from your browser to a server. A type of requests making to the server is called 'method': GET(= get a document from the server) & POST(send data to the server). When making requests, request line if followed by a number of headers.",
 			"image": "http://i.imgur.com/uot62jp.png"
 		},
-		"concept4": {
+		"concept3": {
 			"concept_title": "Purpose of a Server",
 			"concept_description": {
 				"description": "Servers respond to HTTP requests from a browser:",
@@ -42,12 +62,54 @@ unit1 = {
 	}
 }
 
-unit2 = {
-	"unit_title": "Validating Inputs is Important!!",
+unit3 = {
+	"unit_title": "Unit 4.3: Forms",
 	"concepts": {
 		"concept1": {
-			"concept_title": "Why input validation is important?",
-			"concept_description": "When a user enters bad input, varidating input will prevent our web application from being hacked. Make sure to validate data on the server side as it's more sequre than one on the Client side. If you are using Python and HTML template for making a web app, validation should occur in a python file. If you get an error, redirect to the form without storing invalid data to a database.",
+			"concept_title": "What is Forms?",
+			"concept_description": "Forms are the ways which allow websites to collect information from users. For example, text boxes, check boxes, radio buttons, or dropdown meues, etc..."
+		}
+	}
+}
+
+unit4 = {
+	"unit_title": "Unit 4.4: Modulus & Dictionaries",
+	"concepts": {
+		"concept1": {
+			"concept_title": "The Modulus Operator",
+			"concept_description": "The modulus operator '%' returns the reminder of integer division.",
+		},
+		"concept2": {
+			"concept_title": "Dictionaries",
+			"concept_description": "'Dictionaries' are data structures which uses keys to access information. With 'lists' in Python, you need to remember locations of elements. With 'dictionaries', you can map or access information you want to store to keys."
+		}		
+	}
+}
+
+unit5 = {
+	"unit_title": "Unit 4.5: Working with App Engine",
+	"concepts": {
+		"concept1": {
+			"concept_title": "Google App Engine (GAE)",
+			"concept_description": "A tool to host a webpage for free. More info about GAE is <a href='https://cloud.google.com/appengine/docs'>here</a>"
+		},
+		"concept2": {
+			"concept_title": "How to Add Forms",
+			"concept_description": "The following code is and example of a form using GAE. By using post method, when a user type some text, the text they enter will be displayed in '/testform' page."
+		},
+		"concept3": {
+			"concept_title": "Difference between GET and POST",
+			"concept_description": "The big difference between GET and POST is; GETs include prameters in a URL, whereas POSTs include the data in the request body."
+		}
+	}
+}
+
+unit6 = {
+	"unit_title": "Validation",
+	"concepts": {
+		"concept1": {
+			"concept_title": "Why Input Validation is Important?",
+			"concept_description": "When a user enters bad input, varidating input will prevent our web application from being hacked. Make sure to validate data on the server side as it's more secure than one on the Client side. <br> If you are using Python and HTML template for making a web app, validation should occur in a python file. If you get an error, redirect to the form without storing invalid data to a database.",
 		},
 		"concept2": {
 			"concept_title": "Steps for Validation & Redirection",
@@ -70,8 +132,8 @@ unit2 = {
 	}
 }
 
-unit3 = {
-	"unit_title": "HTML Templates & Abstraction",
+unit7 = {
+	"unit_title": "HTML Templates",
 	"concepts": {
 		"concept1": {
 			"concept_title": "String substitution",
@@ -86,7 +148,7 @@ unit3 = {
 			} 
 		},
 		"concept2": {
-			"concept_title": "HTML Templates",
+			"concept_title": "Templates",
 			"concept_description": {
 				"description": "Better way than string substitution is to use Templates. In this lesson, we use jinja2 templates. With templates, you can...",
 				"html_list": [
@@ -99,12 +161,12 @@ unit3 = {
 		},
 		"concept3": {
 			"concept_title": "Template Inheritance",
-			"concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow us to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override'. (http://jinja.pocoo.org/docs/dev/templates/#template-inheritance) So, the template inheritance can avoid writing the same code over and over again when generating html. "
+			"concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow us to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override'(http://jinja.pocoo.org/docs/dev/templates/#template-inheritance). So, the template inheritance can avoid writing the same code over and over again when generating html. "
 		}
 	}
 }
 
-unit4 = {
+unit8 = {
 	"unit_title": "Databases",
 	"concepts": {
 		"concept1": {
@@ -114,15 +176,11 @@ unit4 = {
 		"concept2": {
 			"concept_title": "Benefits of Databases",
 			"concept_description": "Databases can take huge amount of data and answer queries on them in a reasonable amount of time without having to write a lot of custom code."
-		},
-			"concept2": {
-		"concept_title": "Benefits of Databases",
-		"concept_description": "Databases can take huge amount of data and answer queries on them in a reasonable amount of time without having to write a lot of custom code."
 		}
 	}
 }
 
-all_notes = [unit1, unit2, unit3, unit4]
+all_notes = [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8]
 
 concepts_order = ["concept1", "concept2", "concept3", "concept4"]
 
