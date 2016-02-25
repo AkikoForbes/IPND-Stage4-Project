@@ -1,10 +1,10 @@
 import cgi
-# import urllib
+import urllib
 import webapp2
 import jinja2
 import os
 
-# from google.appengine.api import users
+from google.appengine.api import users
 from google.appengine.ext import ndb
 
 # All the data of my notes in a python file 
@@ -17,6 +17,11 @@ template_dir = os.path.join(os.path.dirname(__file__), "html_templates")
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
 							   extensions=["jinja2.ext.autoescape"],
 							   autoescape = True)
+# Register datetime format to the jinja environment
+def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
+	return value.strftime(format)
+jinja_env.filters['datetimeformat'] = datetimeformat
+
 
 
 class Handler(webapp2.RequestHandler):
@@ -39,7 +44,8 @@ class Feedback(ndb.Model):
 	"""A main model for representing an individual Guestbook entry."""
 	user_name = ndb.StringProperty()
 	user_comment = ndb.StringProperty(indexed=False)
-	date = ndb.DateTimeProperty(auto_now_add=True)
+	datetime = ndb.DateTimeProperty(auto_now_add=True)
+
 
 
 class MainPage(Handler):
@@ -55,6 +61,9 @@ class LessonNotes(Handler):
 		error = self.request.get("error", "")
 		redirection = self.request.get("redirection", "")
 
+		# Create multiple html file from one template
+		
+
 		# Render the data into the template "lessonnotes.html"
 		self.render("lessonnotes.html",
 					all_notes=all_notes,
@@ -69,7 +78,8 @@ class FeedbackPage(Handler):
 	def get(self):
 		# [START query]
 		# Query the Datastore and order earliest date first
-		feedback_query = Feedback.query().order(-Feedback.date)
+		datetime = Feedback.datetime
+		feedback_query = Feedback.query().order(-datetime)
 
 		# Return a list of max 10 post objects. 
 		maximum_fetch_size = 10
@@ -78,6 +88,7 @@ class FeedbackPage(Handler):
 
 		error = self.request.get("error", "")
 		success = self.request.get("success", "")
+
 
 		self.render("feedback.html",
 					feedback_list=feedback_list,

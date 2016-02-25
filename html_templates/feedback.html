@@ -33,7 +33,7 @@
 		{% for feedback in feedback_list %}
 			<tr>
 				<td>{{feedback.user_name}}</td>
-				<td>{{feedback.date}}</td>
+				<td>{{feedback.datetime|datetimeformat}}</td>
 				<td>{{feedback.user_comment}}</td>
 			</tr>
 		{% endfor %}
