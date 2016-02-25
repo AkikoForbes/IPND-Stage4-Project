@@ -96,16 +96,17 @@ class FeedbackPage(Handler):
 					error=error)
 
 	def post(self):
-		user_name = self.request.get("user_name")
 		user_comment = self.request.get("user_comment")
+		user_name = self.request.get("user_name")
 
 		# Notifications for a valid or invalid input.
 		error = "Sorry, your input doesn't seem valid. Please try again."
 		success = "Thank you so much for your feedback!"
 
 		valid_comment = is_valid(user_comment)
+		valid_name = is_valid(user_name)
 
-		if not valid_comment:
+		if not (valid_comment and valid_name):
 			self.redirect("/feedback?error=%s" % error)
 
 		else:
