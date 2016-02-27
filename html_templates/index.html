@@ -14,4 +14,10 @@
 			<a href="/lessonnotes">Lesson Notes</a>
 		</div>
 	</div>
+
+	{% if usr %}
+		<div id="user">
+			Welcome, {{user}}
+		</div>
+	{% endif %}
 {% endblock %}

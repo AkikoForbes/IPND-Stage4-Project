@@ -6,6 +6,7 @@ import os
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
+# from webapp2_extras import sessions
 
 # All the data of my notes in a python file 
 import mynotes
@@ -21,7 +22,6 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
 	return value.strftime(format)
 jinja_env.filters['datetimeformat'] = datetimeformat
-
 
 
 class Handler(webapp2.RequestHandler):
@@ -40,20 +40,54 @@ class Handler(webapp2.RequestHandler):
 		return self.write(self.render_str(template, **kw))
 
 
+DEFAULT_FEEDBACK_NAME = 'anonymous'
+
+def feedback_key(feedback_name=DEFAULT_FEEDBACK_NAME):
+	"""Constructs a Datastore key for a Feedback entity."""
+	return ndb.Key('Feedback', feedback_name)
+
+
+class Author(ndb.Model):
+	"""Sub model for representing an author."""
+	identity = ndb.StringProperty(indexed=False)
+	email = ndb.StringProperty(indexed=False)
+
+
 class Feedback(ndb.Model):
-	"""A main model for representing an individual Guestbook entry."""
-	user_name = ndb.StringProperty()
+	"""A main model for representing an individual Feedback entry."""
+	user_name = ndb.StructuredProperty(Author)
 	user_comment = ndb.StringProperty(indexed=False)
 	datetime = ndb.DateTimeProperty(auto_now_add=True)
 
 
-
 class MainPage(Handler):
+
 	def get(self):
 		self.render("index.html")
 
 
+# class LogIn(BaseHandler):
+
+# 	def get(self):
+# 		if self.session.get("user"):
+# 			del self.session["user"]
+# 		if not self.session.get("referrer"):
+# 			self.session["referrer"] = \
+# 				self.request.environ["HTTP_REFERER"] \
+# 				if "HTTP_REFERER" in self.request.environ \
+# 				else "/"
+
+# 		self.render("login.html")
+
+# 	def post(self):
+# 		user = self.request.get("user")
+# 		self.session["user"] = user
+# 		logging.info("%s just logged in" % user)
+# 		self.redirect("/")
+
+
 class LessonNotes(Handler):
+
 	def get(self):
 		# Calling data of my lesson notes from mynotes.py
 		all_notes = mynotes.all_notes
@@ -70,43 +104,73 @@ class LessonNotes(Handler):
 					concepts_order=concepts_order)
 
 
+def is_valid(user_input):
+	if user_input.strip():
+		return True
+	else:
+		return False
+
 
 class FeedbackPage(Handler):
+
 	def escape_html(s):
 		return cgi.escape(s, quote = True)
 
 	def get(self):
+		feedback_name = self.request.get('feedback_named', DEFAULT_FEEDBACK_NAME)
 		# [START query]
 		# Query the Datastore and order earliest date first
 		datetime = Feedback.datetime
-		feedback_query = Feedback.query().order(-datetime)
+		feedback_query = Feedback.query(
+			ancestor=feedback_key(feedback_name)).order(-datetime)
 
 		# Return a list of max 10 post objects. 
 		maximum_fetch_size = 10
 		feedback_list = feedback_query.fetch(maximum_fetch_size)
 		# [END query]
 
+		user = users.get_current_user()
+		if user:
+			url = users.create_logout_url(self.request.uri)
+			url_linktext = 'Logout'
+		else:
+			url = users.create_login_url(self.request.uri)
+			url_linktext = 'Login'
+
 		error = self.request.get("error", "")
 		success = self.request.get("success", "")
-
 
 		self.render("feedback.html",
 					feedback_list=feedback_list,
 					success=success,
-					error=error)
+					error=error,
+					user=user,
+					feedback_name=urllib.quote_plus(feedback_name),
+					url=url,
+					url_linktext=url_linktext)
+
 
 	def post(self):
+
+		feedback_name = self.request.get('feedback_name', DEFAULT_FEEDBACK_NAME)
+		feedback = Feedback(parent=feedback_key(feedback_name))
+
+		if users.get_current_user():
+			feedback.user_name = Author(
+				identity=users.get_current_user().user_id(),
+				email=users.get_current_user().email())
+
 		user_comment = self.request.get("user_comment")
-		user_name = self.request.get("user_name")
+		user_name = feedback.user_name
 
 		# Notifications for a valid or invalid input.
 		error = "Sorry, your input doesn't seem valid. Please try again."
 		success = "Thank you so much for your feedback!"
 
 		valid_comment = is_valid(user_comment)
-		valid_name = is_valid(user_name)
 
-		if not (valid_comment and valid_name):
+
+		if not valid_comment:
 			self.redirect("/feedback?error=%s" % error)
 
 		else:
@@ -117,14 +181,12 @@ class FeedbackPage(Handler):
 			import time
 			time.sleep(.1)
 
-			self.redirect("/feedback?success=%s" % success)
+			query_params = {'user_name': user_name}
+			self.redirect("/feedback?" + urllib.urlencode(query_params))
+				   # "success=%s" % success)
 
 
-def is_valid(user_input):
-	if user_input.strip():
-		return True
-	else:
-		return False
+
 
 
 
