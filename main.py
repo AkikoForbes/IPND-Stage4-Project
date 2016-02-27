@@ -55,8 +55,8 @@ class Author(ndb.Model):
 
 class Feedback(ndb.Model):
 	"""A main model for representing an individual Feedback entry."""
-	user_name = ndb.StructuredProperty(Author)
-	user_comment = ndb.StringProperty(indexed=False)
+	author = ndb.StructuredProperty(Author)
+	content = ndb.StringProperty(indexed=False)
 	datetime = ndb.DateTimeProperty(auto_now_add=True)
 
 
@@ -92,8 +92,6 @@ class LessonNotes(Handler):
 		# Calling data of my lesson notes from mynotes.py
 		all_notes = mynotes.all_notes
 		concepts_order = mynotes.concepts_order
-		error = self.request.get("error", "")
-		redirection = self.request.get("redirection", "")
 
 		# Create multiple html file from one template
 		
@@ -118,6 +116,7 @@ class FeedbackPage(Handler):
 
 	def get(self):
 		feedback_name = self.request.get('feedback_named', DEFAULT_FEEDBACK_NAME)
+
 		# [START query]
 		# Query the Datastore and order earliest date first
 		datetime = Feedback.datetime
@@ -150,38 +149,38 @@ class FeedbackPage(Handler):
 					url_linktext=url_linktext)
 
 
+class Guestbook(Handler):
 	def post(self):
 
 		feedback_name = self.request.get('feedback_name', DEFAULT_FEEDBACK_NAME)
 		feedback = Feedback(parent=feedback_key(feedback_name))
 
 		if users.get_current_user():
-			feedback.user_name = Author(
+			feedback.author = Author(
 				identity=users.get_current_user().user_id(),
 				email=users.get_current_user().email())
-
-		user_comment = self.request.get("user_comment")
-		user_name = feedback.user_name
 
 		# Notifications for a valid or invalid input.
 		error = "Sorry, your input doesn't seem valid. Please try again."
 		success = "Thank you so much for your feedback!"
 
-		valid_comment = is_valid(user_comment)
+		# Validate user content
+		content = self.request.get("content")
+		valid_content = is_valid(content)
 
 
-		if not valid_comment:
+		if not valid_content:
 			self.redirect("/feedback?error=%s" % error)
 
 		else:
-			post = Feedback(user_name=user_name, user_comment=user_comment)
+			post = Feedback(author=feedback.author, content=content)
 			post.put()
 
 			# For local development. Wait a little bit for the local Datastore to update.
 			import time
 			time.sleep(.1)
 
-			query_params = {'user_name': user_name}
+			query_params = {'feedback_name': feedback_name}
 			self.redirect("/feedback?" + urllib.urlencode(query_params))
 				   # "success=%s" % success)
 
@@ -191,6 +190,6 @@ class FeedbackPage(Handler):
 
 
 
-app = webapp2.WSGIApplication([('/', MainPage), ('/lessonnotes', LessonNotes), ('/feedback', FeedbackPage)], debug = True) 
+app = webapp2.WSGIApplication([('/', MainPage), ('/lessonnotes', LessonNotes), ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
 
 

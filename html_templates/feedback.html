@@ -2,58 +2,57 @@
 
 {% block content %}
 
-	<form id="form_comment" action="/feedback?feedback_name={{feedback_name}}" method="post">
-		<fieldset>
-			<legend>Your Feedback</legend>
-			After reading my lesson notes, please leave your feedback here. I would love to hear what you think about my website:)
-			<br>
-			<div>
-				<textarea id="input_comment" name="user_comment" rows="3" cols="60"></textarea>
-			</div>
-			<div><input type="submit" value="Leave Feedback"></div>
+<dir class="buffer">
+	<fieldset>
+		<legend>Your Feedback</legend>
+		After reading my lesson notes, please leave your feedback here. I would love to hear what you think about my website:)
+		<form id="form_content" action="/sign?feedback_name={{ feedback_name }}" method="post">
+			<textarea id="content" name="content" rows="3" cols="60"></textarea><br>
+			<input type="submit" value="Leave Feedback">
 			{% if error %}
-			<span class="notification" id="error">{{error}}</span>
+			<span class="notification" id="error">{{ error }}</span>
 			{% endif %}
-
-			<hr>
-
-			<form>Your name:
-				<input value="{{ feedback_name }}" name="feedback_name">
-				<input type="submit" value="switch">		
-			</form>
-
-			<a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>
-		</fieldset>
-	</form>
-
+		</form>
+		<hr>
+		<form id="form_author">
+			Your name:
+			<input value="{{ feedback_name }}" name="feedback_name">
+			<input type="submit" value="switch">
+			<a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>		
+		</form>
+	</fieldset>	
+</dir>
 
 
 {% if success %}
 	<blockquote>
-		<span class="notification" id="success">{{success}}</span>
+		<span class="notification" id="success">{{ success }}</span>
 	</blockquote>
 {% endif %}
 
-<table>
-	<caption>Feedback</caption>
-	<tr><th>Who</th><th>When</th><th>What</th></tr>
-	{% if feedback_list %}
-		{% for feedback in feedback_list %}
-			<tr>
-				<td>
-				{% if feedback.user_name %}
-					{{feedback.user_name.email}}
-						{% if user and user.user_id() == feedback.user_name.identity %}
-							(You)
-						{% endif %}
-				{% else %}
-					An anonymous person
-				{% endif %}			
-				</td>
-				<td>{{feedback.datetime|datetimeformat}}</td>
-				<td>{{feedback.user_comment}}</td>
-			</tr>
-		{% endfor %}
-	{% endif %}
-</table>
+<div class="buffer">
+	<table>
+		<caption>Feedback</caption>
+		<tr><th>Who</th><th>When</th><th>What</th></tr>
+		{% if feedback_list %}
+			{% for feedback in feedback_list %}
+				<tr>
+					<td id="author">
+					{% if feedback.author %}
+						{{ feedback.author.email }}
+							{% if user and user.user_id() == feedback.author.identity %}
+								(You)
+							{% endif %}
+					{% else %}
+						Anonymous Author
+					{% endif %}			
+					</td>
+					<td id="datetime">{{ feedback.datetime|datetimeformat }}</td>
+					<td id="content">{{ feedback.content }}</td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+</div>
+
 {% endblock %}

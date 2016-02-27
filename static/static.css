@@ -11,8 +11,8 @@
 	margin: 4px;
 	border: red solid 2px;
 	background-color: rgba(0,0,0,0.15);
-}
-*/
+}*/
+
  
 body {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -81,9 +81,15 @@ h1 {
     font-size: 1.5em;
 }
 
-form, table, blockquote {
+.buffer {
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+fieldset, table, blockquote {
     background-color : #ffffff;
     opacity: 0.9;
+    max-width: 100%;
 }
 
 form {
@@ -98,6 +104,10 @@ legend {
 
 #error {
     color: #ff0000;
+}
+
+#login-logout {
+    background-color: #ffffff;
 }
 
 /*#success {
@@ -134,6 +144,7 @@ table {
     border-collapse: collapse;
     margin-top: 1em;
     margin-bottom: 1em;
+    margin-left: 10px;
 }
 
 caption {
@@ -149,6 +160,14 @@ th, td {
 
 td {
     padding: 0.5em;
+}
+
+#author {
+    width: 30%;
+}
+
+#content {
+    width: 40%;
 }
 
 .unit {
