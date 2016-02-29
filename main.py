@@ -76,6 +76,10 @@ class LessonNotes(Handler):
         all_notes = mynotes.all_notes
         concepts_order = mynotes.concepts_order
 
+        print "########### CONCEPTS_ORDER ############"
+        print concepts_order
+        print "#######################################"
+
         # Render the data into the template "lessonnotes.html"
         self.render("lessonnotes.html",
                     all_notes=all_notes,
