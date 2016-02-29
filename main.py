@@ -1,5 +1,4 @@
 # [START imports]
-# import cgi
 import os
 import urllib
 
@@ -77,11 +76,6 @@ class LessonNotes(Handler):
         all_notes = mynotes.all_notes
         concepts_order = mynotes.concepts_order
 
-        print "########## CONCEPT_ORDER ###########"
-        print concepts_order
-        print "####################################"
-
-
         # Render the data into the template "lessonnotes.html"
         self.render("lessonnotes.html",
                     all_notes=all_notes,
@@ -106,18 +100,10 @@ class FeedbackPage(Handler):
         feedback_query = Feedback.query(
             ancestor=feedback_key(feedback_name)).order(-datetime)
 
-        print "############ FEEDBACK_QUERY #############"
-        print feedback_query
-        print "#########################################"
-
         # Return a list of max 10 post objects. 
         maximum_fetch_size = 10
         feedback_list = feedback_query.fetch(maximum_fetch_size)
         # [END query]
-
-        print "############ FEEDBACK_LIST #############"
-        print feedback_list
-        print "########################################"
 
         user = users.get_current_user()
         if user:
@@ -164,8 +150,6 @@ class Guestbook(Handler):
             self.redirect("/feedback?error=%s" % error)
 
         else:
-            # post = Feedback(author=feedback.author, content=content)
-            # post.put()
             feedback.put()
 
             # For local development. Wait a little bit for the local Datastore to update.
@@ -174,11 +158,6 @@ class Guestbook(Handler):
 
             query_params = {'feedback_name': feedback_name}
             self.redirect("/feedback?" + urllib.urlencode(query_params))
-                   # "success=%s" % success)
-
-
-
-
 
 
 
