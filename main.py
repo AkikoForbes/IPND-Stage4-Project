@@ -69,11 +69,11 @@ class MainPage(Handler):
         self.render("index.html")
 
 
-class LessonNotes(Handler):
+class UnitOne(Handler):
 
     def get(self):
         # Calling data of my lesson notes from mynotes.py
-        all_notes = mynotes.all_notes
+        unit = mynotes.unit1
         concepts_order = mynotes.concepts_order
 
         print "########### CONCEPTS_ORDER ############"
@@ -81,8 +81,8 @@ class LessonNotes(Handler):
         print "#######################################"
 
         # Render the data into the template "lessonnotes.html"
-        self.render("lessonnotes.html",
-                    all_notes=all_notes,
+        self.render("unitone.html",
+                    unit=unit,
                     concepts_order=concepts_order)
 
 
@@ -165,6 +165,6 @@ class Guestbook(Handler):
 
 
 
-app = webapp2.WSGIApplication([('/', MainPage), ('/lessonnotes', LessonNotes), ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
+app = webapp2.WSGIApplication([('/', MainPage), ('/unitone', UnitOne), ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
 
 
