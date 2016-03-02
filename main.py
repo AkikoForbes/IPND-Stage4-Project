@@ -108,6 +108,72 @@ class UnitThree(Handler):
                     concepts_order=concepts_order)
 
 
+class UnitFour(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit4
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitfour.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitFive(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit5
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitfive.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+
+class UnitSix(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit6
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitsix.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitSeven(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit7
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitseven.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitEight(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit7
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("uniteight.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
 def is_valid(user_input):
     if user_input.strip():
         return True
@@ -187,6 +253,6 @@ class Guestbook(Handler):
 
 
 
-app = webapp2.WSGIApplication([('/', MainPage), ('/unitone', UnitOne), ('/unittwo', UnitTwo), ('/unitthree', UnitThree), ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
+app = webapp2.WSGIApplication([('/', MainPage), ('/unitone', UnitOne), ('/unittwo', UnitTwo), ('/unitthree', UnitThree), ('/unitfour', UnitFour), ('/unitfive', UnitFive), ('/unitsix', UnitSix), ('/unitseven', UnitEight), ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
 
 
