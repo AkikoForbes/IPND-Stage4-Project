@@ -5,26 +5,26 @@
 <dir class="buffer">
 	<fieldset>
 		<legend>Your Feedback</legend>
-		After reading my lesson notes, please leave your feedback here. I would love to hear what you think about my website:)
-		<form id="form_content" action="/sign?feedback_name={{ feedback_name }}" method="post">
-			<div><textarea id="content" name="content" rows="3" cols="60"></textarea></div>
-			<div><input type="submit" value="Leave Feedback"></div>
-			{% if error %}
-			<span class="notification" id="error">{{ error }}</span>
-			{% endif %}
-		</form>
-		<hr>
-		<div>
-			You are logged in as:
-			<span class="login-status">
-				{% if user %}
-					{{ user.email() }}
-				{% else %}
-					Anonymous
-				{% endif %}			
-			</span>
-			<a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>
-		</div>
+			<div>
+				You are logged in as:
+				<span class="login-status">
+					{% if user %}
+						{{ user.email() }}
+					{% else %}
+						Anonymous
+					{% endif %}
+				</span>
+				<a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>
+			</div>
+			<hr>
+			Please leave your feedback here. I would love to hear what you think about my website:)
+			<form id="form_content" action="/sign?feedback_name={{ feedback_name }}" method="post">
+				<div><textarea id="content" name="content" rows="3" cols="60"></textarea></div>
+				<div><input type="submit" value="Leave Feedback"></div>
+				{% if error %}
+				<span class="notification" id="error">{{ error }}</span>
+				{% endif %}
+			</form>
 	</fieldset>	
 </dir>
 
