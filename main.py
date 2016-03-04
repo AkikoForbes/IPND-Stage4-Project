@@ -134,7 +134,6 @@ class UnitFive(Handler):
                     concepts_order=concepts_order)
 
 
-
 class UnitSix(Handler):
 
     def get(self):
@@ -249,7 +248,7 @@ class Guestbook(Handler):
             time.sleep(.1)
 
             query_params = {'feedback_name': feedback_name}
-            self.redirect("/feedback?" + urllib.urlencode(query_params))
+            self.redirect("/feedback?" + urllib.urlencode(query_params) +"&success=%s" % success)
 
 
 
