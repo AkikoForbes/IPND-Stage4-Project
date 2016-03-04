@@ -14,12 +14,17 @@
 			{% endif %}
 		</form>
 		<hr>
-		<form id="form_author">
-			Your name:
-			<input value="{{ feedback_name }}" name="feedback_name">
-			<input type="submit" value="switch">
-			<a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>		
-		</form>
+		<div>
+			You are logged in as:
+			<span class="login-status">
+				{% if user %}
+					{{ user.email() }}
+				{% else %}
+					Anonymous
+				{% endif %}			
+			</span>
+			<a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>
+		</div>
 	</fieldset>	
 </dir>
 

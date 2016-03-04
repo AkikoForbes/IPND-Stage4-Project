@@ -69,16 +69,107 @@ class MainPage(Handler):
         self.render("index.html")
 
 
-class LessonNotes(Handler):
+class UnitOne(Handler):
 
     def get(self):
         # Calling data of my lesson notes from mynotes.py
-        all_notes = mynotes.all_notes
+        unit = mynotes.unit1
         concepts_order = mynotes.concepts_order
 
         # Render the data into the template "lessonnotes.html"
-        self.render("lessonnotes.html",
-                    all_notes=all_notes,
+        self.render("unitone.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitTwo(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit2
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unittwo.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitThree(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit3
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitthree.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitFour(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit4
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitfour.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitFive(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit5
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitfive.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitSix(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit6
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitsix.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitSeven(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit7
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("unitseven.html",
+                    unit=unit,
+                    concepts_order=concepts_order)
+
+
+class UnitEight(Handler):
+
+    def get(self):
+        # Calling data of my lesson notes from mynotes.py
+        unit = mynotes.unit8
+        concepts_order = mynotes.concepts_order
+
+        # Render the data into the template "lessonnotes.html"
+        self.render("uniteight.html",
+                    unit=unit,
                     concepts_order=concepts_order)
 
 
@@ -161,6 +252,9 @@ class Guestbook(Handler):
 
 
 
-app = webapp2.WSGIApplication([('/', MainPage), ('/lessonnotes', LessonNotes), ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
+app = webapp2.WSGIApplication([('/', MainPage), ('/unitone', UnitOne), ('/unittwo', UnitTwo),
+                               ('/unitthree', UnitThree), ('/unitfour', UnitFour), ('/unitfive', UnitFive),
+                               ('/unitsix', UnitSix), ('/unitseven', UnitSeven), ('/uniteight', UnitEight), 
+                               ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
 
 

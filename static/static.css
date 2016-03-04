@@ -106,14 +106,18 @@ legend {
     color: #ff0000;
 }
 
+.login-status {
+    font-style: italic;
+}
+
 #login-logout {
     background-color: #ffffff;
 }
 
-/*#success {
+#success {
     color: #000066;
 }
-*/
+
 blockquote {
     margin: 20px;
     font-size: 1.5em;
