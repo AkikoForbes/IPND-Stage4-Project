@@ -55,10 +55,6 @@ h1 {
     float: left;
 }
 
-.links-container {
-    overflow: hidden;
-}
-
 .link {
     background-color: #4caf25;
     color: white;
@@ -75,6 +71,14 @@ h1 {
     display: inline-block;
 }
 
+.dropbtn {
+    background-color: #4caf25;
+    color: white;
+    border: 0px;
+    font-size: 16px;
+    font-family: ;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -85,18 +89,18 @@ h1 {
 
 .dropdown-content a {
     color: black;
-/*    padding: 12px 16px; */
+    padding: 12px 16px; 
     text-decoration: none;
     display: block;
 }
 
 .dropdown-content a:hover {
     background-color: #f1f1f1;
-    z-index: 2;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
+    z-index: 1;
 }
 
 .dropdown:hover .dropbtn {
@@ -108,10 +112,10 @@ h1 {
     background-color: #ffd3d8;
     color: #18191a;
     border-radius: 10px;
-    margin: 10px;
+    margin-top: 80px;
     border-style: double;
     padding-left: 10px;
-    font-size: 15px;
+    font-size: 1.0em;
 }
 
 .introduction a {
@@ -119,10 +123,10 @@ h1 {
     color: #18191a;   
 }
 
-.link-to-lessonnotes {
+.check-notes {
     color: #003366;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 /* style for unit notes */
@@ -130,7 +134,8 @@ h1 {
     background-color : #4c2827;
     color: #f0f8ff;
     padding-bottom: 10px;
-    z-index: 1;
+    margin-top: 80px;
+    z-index: -1;
 }
 
 .unit h2 {
