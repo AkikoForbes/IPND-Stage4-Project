@@ -7,12 +7,12 @@
 
 /*Use the code blow to visualize the boxes and the HTML structure when you check your code.*/
 
-* {
+/** {
 	margin: 4px;
 	border: red solid 2px;
 	background-color: rgba(0,0,0,0.15);
 }
-
+*/
  
 body {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -127,7 +127,7 @@ h1 {
 .check-notes {
     color: #003366;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 /* style for unit notes */
@@ -175,6 +175,17 @@ h3 {
 img {
     max-width: 100%;
     max-height: 100%;
+}
+
+.code {
+    background-color: gray;
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 100%;
+}
+
+.form {
+    padding: 5px;
 }
 
 /* style for a feedback form in /feedback */

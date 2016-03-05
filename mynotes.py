@@ -20,13 +20,11 @@ unit1 = {
         },
         "concept2": {
             "concept_title": "Latency & Bandwidth",
-            "concept_description": {
-                "description": "There are two main way to measure networks.",
-                "html_list": [
-                    "Latency: a duration of a message sent from its source to its destination",
-                    "Bandwidth: an amount of information that can be transmitted per unit time"
-                ]
-            }
+            "concept_description": "There are two main way to measure networks.",
+            "html_list": [
+                "Latency: a duration of a message sent from its source to its destination",
+                "Bandwidth: an amount of information that can be transmitted per unit time"
+            ]
         },
         "concept3": {
             "concept_title": "Client / Server / Protocol",
@@ -51,13 +49,11 @@ unit2 = {
         },
         "concept3": {
             "concept_title": "Purpose of a Server",
-            "concept_description": {
-                "description": "Servers respond to HTTP requests from a browser:",
-                "html_list": [
-                    "Static requests --- pre-written files, images",
-                    "Dynamic requests --- made on the fly by Web application on a web server, which generates content that the browser requests, such as Facebook or Google Search Engine"
-                ]
-            }
+            "concept_description": "Servers respond to HTTP requests from a browser:",
+            "html_list": [
+                "Static content --- pre-written files, images",
+                "Dynamic content --- built on the fly by a Web application on a web server. Web applications dinamically generates content that the browser requests. Ex. Facebook or Google Search Engine."
+            ]
         }
     }
 }
@@ -67,7 +63,55 @@ unit3 = {
     "concepts": {
         "concept1": {
             "concept_title": "What is Forms?",
-            "concept_description": "Forms are the ways which allow websites to collect information from users. For example, text boxes, check boxes, radio buttons, or dropdown meues, etc..."
+            "concept_description": "Forms are the ways which allow websites to collect information from users."
+        },
+        "concept2": {
+            "concept_title": "Examples of Forms",
+            "concept_description": "There are various types of forms, such as text boxes, check boxes, radio buttons, or dropdown meues, etc...",
+            "forms": [
+                {"form_name": "Text Box",
+                 "form_example": """<label>
+        Name:
+        <input name='q'>
+    </label>
+    <label>
+        Age:
+        <input name='r'>
+    </label>"""
+                },
+                {"form_name": "Check Box",
+                 "form_example": """<label>
+        One
+        <input type="checkbox" name="q">
+    </label>
+    <label>
+        Two
+        <input type="checkbox" name="q">
+    </label>
+    <label>
+        Three
+        <input type="checkbox" name="q">
+    </label>
+    <br>
+    <input type="submit">"""
+            },
+            {"form_name": "Radio Buttons",
+             "form_example": """<label>
+        One
+        <input type="radio" name="q">
+    </label>
+    <label>
+        Two
+        <input type="radio" name="q">
+    </label>
+    <label>
+        Three
+        <input type="radio" name="q">
+    </label>
+    <br>
+    <input type="submit">"""
+                }
+            ]
         }
     }
 }
@@ -78,10 +122,14 @@ unit4 = {
         "concept1": {
             "concept_title": "The Modulus Operator",
             "concept_description": "The modulus operator '%' returns the reminder of integer division.",
+            "code": """<Number> % <Modulus> ---> <Reminder>
+   14    %    12     --->    2""",
         },
         "concept2": {
             "concept_title": "Dictionaries",
-            "concept_description": "'Dictionaries' are data structures which uses keys to access information. With 'lists' in Python, you need to remember locations of elements. With 'dictionaries', you can map or access information you want to store to keys."
+            "concept_description": "'Dictionaries' are data structures which uses keys to access information. With 'lists' in Python, you need to remember locations of elements. With 'dictionaries', you can map or access information you want to store to keys.",
+            "code": """
+"""
         }       
     }
 }
@@ -91,7 +139,11 @@ unit5 = {
     "concepts": {
         "concept1": {
             "concept_title": "Google App Engine (GAE)",
-            "concept_description": "A tool to host a webpage for free. More info about GAE is <a href='https://cloud.google.com/appengine/docs'>here</a>"
+            "concept_description": "A tool to host a webpage for free. For more info about GAE, please visit the link below.",
+            "link": {
+                "link_title": "Google App Engine Docs",
+                "url": "https://cloud.google.com/appengine/docs"
+            }
         },
         "concept2": {
             "concept_title": "How to Add Forms",
@@ -105,23 +157,21 @@ unit5 = {
 }
 
 unit6 = {
-    "unit_title": "Validation",
+    "unit_title": "Unit 4.6: Validation",
     "concepts": {
         "concept1": {
             "concept_title": "Why Input Validation is Important?",
-            "concept_description": "When a user enters bad input, varidating input will prevent our web application from being hacked. Make sure to validate data on the server side as it's more secure than one on the Client side. <br> If you are using Python and HTML template for making a web app, validation should occur in a python file. If you get an error, redirect to the form without storing invalid data to a database.",
+            "concept_description": "When a user enters bad input, varidating input will prevent our web application from being hacked. Make sure to validate data on the server side as it's more secure than one on the Client side. If you are using Python and HTML template for making a web app, validation should occur in a python file. If you get an error, redirect to the form without storing invalid data to a database.",
         },
         "concept2": {
             "concept_title": "Steps for Validation & Redirection",
-            "concept_description": {
-                "description" : "With varidation, the user will know that there's an error.",
-                "html_list": [
-                    "Verify the user's input",
-                    "On error, render form again",
-                    "Include error message",
-                    "With a valid input, store data and redirect a page without an error message"
-                ]
-            },
+            "concept_description": "With varidation, the user will know that there's an error.",
+            "html_list": [
+                "Verify the user's input",
+                "On error, render form again",
+                "Include error message",
+                "With a valid input, store data and redirect a page without an error message"
+            ],
             "image": "http://i.imgur.com/NibKQte.png"
         },
         "concept3": {
@@ -133,41 +183,41 @@ unit6 = {
 }
 
 unit7 = {
-    "unit_title": "HTML Templates",
+    "unit_title": "Unit 4.7: HTML Templates",
     "concepts": {
         "concept1": {
             "concept_title": "String substitution",
-            "concept_description": {
-                "description": "One way to format html is to use the modulus operator %s in html string in Python. But it has quite a few problems;",
-                "html_list": [
-                    "Hardcoded %s everywhere and difficult to change",
-                    "Putting html in python code as strings won't get syntax highlighted",
-                    "Can be made more clear",
-                    "If you miss changing %s, output will show %s as it is"
-                ]
-            } 
+            "concept_description": "One way to format html is to use the modulus operator %s in html string in Python. But it has quite a few problems;",
+            "html_list": [
+                "Hardcoded %s everywhere and difficult to change",
+                "Putting html in python code as strings won't get syntax highlighted",
+                "Can be made more clear",
+                "If you miss changing %s, output will show %s as it is"
+            ]
         },
         "concept2": {
             "concept_title": "Templates",
-            "concept_description": {
-                "description": "Better way than string substitution is to use Templates. In this lesson, we use jinja2 templates. With templates, you can...",
-                "html_list": [
-                    "Separate different types of code (ex. sparate HTML from Python)",
-                    "Have better organized and more readable code",
-                    "More secure websites with autoescaping feature",
-                    "HTML that is easier to manipulate"
-                ]
-            }
+            "concept_description": "Better way than string substitution is to use Templates. In this lesson, we use jinja2 templates. With templates, you can...",
+            "html_list": [
+                "Separate different types of code (ex. sparate HTML from Python)",
+                "Have better organized and more readable code",
+                "More secure websites with autoescaping feature",
+                "HTML that is easier to manipulate"
+            ]
         },
         "concept3": {
             "concept_title": "Template Inheritance",
-            "concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow us to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override'(http://jinja.pocoo.org/docs/dev/templates/#template-inheritance). So, the template inheritance can avoid writing the same code over and over again when generating html. "
+            "concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow you to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override'. So, the template inheritance can avoid writing the same code over and over again when generating html. ",
+            "link": {
+                "link_title": "reference",
+                "url": "http://jinja.pocoo.org/docs/dev/templates/#template-inheritance"
+            }
         }
     }
 }
 
 unit8 = {
-    "unit_title": "Databases",
+    "unit_title": "Unit 4.8: Databases",
     "concepts": {
         "concept1": {
             "concept_title": "What is a Database?",
@@ -179,8 +229,6 @@ unit8 = {
         }
     }
 }
-
-all_notes = [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8]
 
 concepts_order = ["concept1", "concept2", "concept3", "concept4"]
 

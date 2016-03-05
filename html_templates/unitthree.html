@@ -12,23 +12,42 @@
 						<h3>{{ unit["concepts"][concept]["concept_title"] }}</h3>
 					</div>
 					<div class="concept-description">
-						{% if unit["concepts"][concept]["concept_description"]["html_list"]%}
 						<p>
-							{{ unit["concepts"][concept]["concept_description"]["description"] }}
+							{{ unit["concepts"][concept]["concept_description"] }}
 						</p>
+						{% if unit["concepts"][concept]["html_list"]%}
 						<ol>
-							{% for item in unit["concepts"][concept]["concept_description"]["html_list"] %}
+							{% for item in unit["concepts"][concept]["html_list"] %}
 							<li>{{ item }}</li>
 							{% endfor %}
 						</ol>
-						{% else %}
-							{{ unit["concepts"][concept]["concept_description"] }}
+						{% endif %}
+						{% if unit["concepts"][concept]["code"] %}
+						<div class="code">
+							<pre><code>{{ unit["concepts"][concept]["code"] }}</code></pre>
+						</div>
+						{% endif %}
+						{% if unit["concepts"][concept]["link"] %}
+						<a href="{{ unit["concepts"][concept]["link"]["url"] }}">{{ unit["concepts"][concept]["link"]["link_title"] }}</a>
 						{% endif %}
 					</div>
 					{% if unit["concepts"][concept]["image"] %}
 					<div class="container">
-						<img src='{{unit["concepts"][concept]["image"]}}'>
+						<img src='{{ unit["concepts"][concept]["image"] }}'>
 					</div>
+					{% endif %}
+					{% if unit["concepts"][concept]["forms"] %}
+						{% for form in unit["concepts"][concept]["forms"] %}
+						<hr>
+						<div class="form">
+						{{ form["form_name"] }}
+						<form>
+							{% autoescape false %}
+							{{ form["form_example"] }}
+							{% endautoescape %}
+						</form>				
+						</div>
+						{%endfor %}
 					{% endif %}
 				</div>
 			{% endif %}
