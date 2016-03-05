@@ -7,12 +7,12 @@
 
 /*Use the code blow to visualize the boxes and the HTML structure when you check your code.*/
 
-/** {
+* {
 	margin: 4px;
 	border: red solid 2px;
 	background-color: rgba(0,0,0,0.15);
 }
-*/
+
  
 body {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -67,6 +67,7 @@ h1 {
 
 /* Dropdown menu for selecting units */
 .dropdown {
+    padding-bottom: 10px;
     position: relative;
     display: inline-block;
 }
@@ -180,6 +181,10 @@ img {
 .buffer {
     padding: 10px;
     background-color: #ffffff;
+}
+
+#form-buffer {
+    margin-top: 80px;
 }
 
 fieldset, table, blockquote {
