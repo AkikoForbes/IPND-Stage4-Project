@@ -1,16 +1,3 @@
-""" Delete here when submitting!!!
-#############################################################################
-Notes which demonstrate an understanding of:
-    - Servers: 
-        how servers handle requests, process them, and deliver responses
-    - The Importance of Validating Input: 
-        acknowledge the importance of validating user input, expecially the implications that validation has on site security and user experience.
-    - HTML Templates and Abstraction:
-        an understanding of why programmers use HTML templates, how these templates allow programmers to avoid repetition, and understanding of WHY avoiding repetition is important
-#############################################################################
-"""
-
-
 unit1 = {
     "unit_title": "Unit 4.1: Introduction to Networks",
     "concepts": {
@@ -147,7 +134,9 @@ unit5 = {
         },
         "concept2": {
             "concept_title": "How to Add Forms",
-            "concept_description": "The following code is and example of a form using GAE. By using post method, when a user type some text, the text they enter will be displayed in '/testform' page."
+            "concept_description": "The following code is and example of a form using GAE. By using post method, when a user type some text, the text they enter will be displayed in '/testform' page.",
+            "code": """
+"""
         },
         "concept3": {
             "concept_title": "Difference between GET and POST",
