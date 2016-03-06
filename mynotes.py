@@ -114,9 +114,26 @@ unit4 = {
         },
         "concept2": {
             "concept_title": "Dictionaries",
-            "concept_description": "'Dictionaries' are data structures which uses keys to access information. With 'lists' in Python, you need to remember locations of elements. With 'dictionaries', you can map or access information you want to store to keys.",
-            "code": """
-"""
+            "concept_description": "'Dictionaries' are data structures which uses keys to access information.With 'lists' in Python, you need to remember locations of elements and it's confusing for yourself and other people to work out. Dictionary gives you an ability to access more descriptive keys.",
+            "code": """trip_list = [
+    ["Peru", "Machu Picchu", "Papa Rellena"],
+    ["Ireland", "Giant's Causeway", "Irish Stew"],
+    ["New Zealand", "Milford Sound", "Seafood!!"]
+]
+
+trip_dictionary = {
+    "Peru": {"spot": "Machu Picchu", "food": "Papa Rellena"},
+    "Ireland": {"spot": "Giant's Causeway", "food": "Irish Stew"},
+    "New Zealand": {"spot": "Milford Sound", "food": "Seafood!!"}
+}
+
+# to display the information of Peru
+print trip_list[0]
+print trip_dictionary["Peru"]
+
+# to display food to eat in New Zealand
+print trip_list[2][2]
+print trip_dictionary["New Zealand"]["food"]"""
         }       
     }
 }
@@ -135,12 +152,36 @@ unit5 = {
         "concept2": {
             "concept_title": "How to Add Forms",
             "concept_description": "The following code is and example of a form using GAE. By using post method, when a user type some text, the text they enter will be displayed in '/testform' page.",
-            "code": """
+            "code": """import webapp2
+
+form='''
+<form method="post" action="/testform">
+    <input name="q">
+    <input type="submit">
+</form>
+'''
+
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        self.response.out.write(form)
+
+class TestHandler(webapp2.RequestHandler):
+    def post(self):
+        q = self.request.get("q")
+        self.response.out.write(q)
+
+app = webapp2.WSGIApplication([("/", MainPage),
+                               ('/testform', TestHandler)],
+                               debug = True)
 """
         },
         "concept3": {
             "concept_title": "Difference between GET and POST",
-            "concept_description": "The big difference between GET and POST is; GETs include prameters in a URL, whereas POSTs include the data in the request body."
+            "concept_description": "The big difference between GET and POST is:",
+            "html_list": [
+                "GETs include prameters in a URL.",
+                "POSTs include the data in the request body."
+            ]
         }
     }
 }
