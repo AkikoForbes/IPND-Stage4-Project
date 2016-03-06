@@ -240,13 +240,13 @@ unit7 = {
         },
         "concept4": {
             "concept_title": "Template Inheritance",
-            "concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow you to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override'. The template inheritance can avoide writing the same code over and over again when generating html!",
+            "concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow you to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override (REF: jinja2 documentation)'. The template inheritance can avoide writing the same code over and over again when generating html!",
             "html_list": [
                 "Base template --- defines a simple HTML skelton document that you use for the entire website. So, when you change one file, the entire website will change along with it.",
                 "Child template --- fills the empty blocks with content. Template inheritance allows you to separate the content."
             ],
             "link": {
-                "link_title": "reference",
+                "link_title": "reference: Template inheritance (jinja2 documentation)",
                 "url": "http://jinja.pocoo.org/docs/dev/templates/#template-inheritance"
             }
         }
@@ -263,6 +263,30 @@ unit8 = {
         "concept2": {
             "concept_title": "Benefits of Databases",
             "concept_description": "Databases can take huge amount of data and answer queries on them in a reasonable amount of time without having to write a lot of custom code."
+        },
+        "concept3": {
+            "concept_title": "Types of Databases",
+            "concept_description": "There's no single best type of databases. Database types are:",
+            "html_list": [
+                "Relational (SQL) --- PostgreSQL, MySQL(most popular), SQLite, Oracle",
+                "Google App Engine's Datastore",
+                "Dynamo (Amazon)",
+                "NoSQL --- mango, couch"
+            ]
+        },
+        "concept4": {
+            "concept_title": "ACID",
+            "concept_description": "'ACID is 'a set of properties that guarantee that database transactions are processed reliably.(REF:Wikipedia)' Important to know is that there's always trade off. It's hard to have a perfect database which is completely atomic, completely consistent, completely isolated, and completely duarable.",
+            "html_list": [
+                "A - Atomicity: all parts of a transaction succeed or fail together (a group of commands)",
+                "C - Consistancy: the database will always be consistent",
+                "I - Isolation: no transaction can interfere one another",
+                "D - Durability: once the transaction is comitted, it won't be lost"
+            ],
+            "link": {
+                "link_title": "reference: ACID (Wikipedia)",
+                "url": "https://en.wikipedia.org/wiki/ACID"
+            }
         }
     }
 }
