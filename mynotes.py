@@ -175,28 +175,35 @@ unit7 = {
     "unit_title": "Unit 4.7: HTML Templates",
     "concepts": {
         "concept1": {
-            "concept_title": "String substitution",
-            "concept_description": "One way to format html is to use the modulus operator %s in html string in Python. But it has quite a few problems;",
+            "concept_title": "WHY is Avoiding Repetition Important?",
+            "concept_description": "When making a complex app, it's annoying and time consuming to type all the code. It's also error prone and a pain to change every single code. If you can minimize repetition:",
             "html_list": [
-                "Hardcoded %s everywhere and difficult to change",
-                "Putting html in python code as strings won't get syntax highlighted",
-                "Can be made more clear",
-                "If you miss changing %s, output will show %s as it is"
+                "Programmers can make complex application much more easily and efficiently.",
+                "Easier to read and understand for other programmers or when you come back to it later.",
+                "Less code --- Users can load web pages/applications faster."
             ]
         },
         "concept2": {
+            "concept_title": "String substitution",
+            "concept_description": "Formattng HTML is one way to avoid repetition. You can do that with the modulus operator %s in html string in Python. But it's difficult to change with hardcoded %s everywhere, strings won't get syntax highlighted and output will show %s as it is if you miss changing it."
+        },
+        "concept3": {
             "concept_title": "Templates",
-            "concept_description": "Better way than string substitution is to use Templates. In this lesson, we use jinja2 templates. With templates, you can...",
+            "concept_description": "Better way is to use Templates. In this lesson, we use jinja2 templates. With templates, you can...",
             "html_list": [
-                "Separate different types of code (ex. sparate HTML from Python)",
+                "Separate different types of code --- All HTML in one place. All code in one place.",
                 "Have better organized and more readable code",
                 "More secure websites with autoescaping feature",
                 "HTML that is easier to manipulate"
             ]
         },
-        "concept3": {
+        "concept4": {
             "concept_title": "Template Inheritance",
-            "concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow you to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override'. So, the template inheritance can avoid writing the same code over and over again when generating html. ",
+            "concept_description": "The most advantage of using jinja2 template is template inheritance, which 'allow you to build a base 'skeleton' template that contains all the common elements of your site and defines blocks that child template can override'. The template inheritance can avoide writing the same code over and over again when generating html!",
+            "html_list": [
+                "Base template --- defines a simple HTML skelton document that you use for the entire website. So, when you change one file, the entire website will change along with it.",
+                "Child template --- fills the empty blocks with content. Template inheritance allows you to separate the content."
+            ],
             "link": {
                 "link_title": "reference",
                 "url": "http://jinja.pocoo.org/docs/dev/templates/#template-inheritance"
