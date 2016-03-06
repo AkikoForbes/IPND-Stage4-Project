@@ -127,7 +127,7 @@ trip_dictionary = {
     "New Zealand": {"spot": "Milford Sound", "food": "Seafood!!"}
 }
 
-# to display the information of Peru
+# to display the information about Peru
 print trip_list[0]
 print trip_dictionary["Peru"]
 
@@ -191,7 +191,7 @@ unit6 = {
     "concepts": {
         "concept1": {
             "concept_title": "Why Input Validation is Important?",
-            "concept_description": "When a user enters bad input, varidating input will prevent our web application from being hacked. Make sure to validate data on the server side as it's more secure than one on the Client side. If you are using Python and HTML template for making a web app, validation should occur in a python file. If you get an error, redirect to the form without storing invalid data to a database.",
+            "concept_description": "When a user enters bad input, varidating input will prevent our web application from being hacked. Make sure to validate data on the SERVER side as it's more secure than one on the Client side. If you are using Python and HTML template for making a web app, validation should occur in a python file. If you get an error, redirect to the form without storing invalid data to a database.",
         },
         "concept2": {
             "concept_title": "Steps for Validation & Redirection",
@@ -217,7 +217,7 @@ unit7 = {
     "concepts": {
         "concept1": {
             "concept_title": "WHY is Avoiding Repetition Important?",
-            "concept_description": "When making a complex app, it's annoying and time consuming to type all the code. It's also error prone and a pain to change every single code. If you can minimize repetition:",
+            "concept_description": "When making a complex app, it's annoying and time consuming to type all the code. It's also error prone and a pain to change every single code. Minimizing repetition is important because:",
             "html_list": [
                 "Programmers can make complex application much more easily and efficiently.",
                 "Easier to read and understand for other programmers or when you come back to it later.",
