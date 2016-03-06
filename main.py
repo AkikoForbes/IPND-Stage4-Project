@@ -230,13 +230,8 @@ class Guestbook(Handler):
         else:
             feedback.put()
 
-            # For local development. Wait a little bit for the local Datastore to update.
-            import time
-            time.sleep(.1)
-
             query_params = {'feedback_name': feedback_name}
             self.redirect("/feedback?" + urllib.urlencode(query_params) +"&success=%s" % success)
-
 
 
 app = webapp2.WSGIApplication([('/', MainPage), ('/unitone', UnitOne), ('/unittwo', UnitTwo),
