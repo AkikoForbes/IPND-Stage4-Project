@@ -8,7 +8,7 @@ from google.appengine.ext import ndb
 import jinja2
 import webapp2
 
-# All the data of my notes in a python file 
+# All the data of my notes in a python file
 import mynotes
 
 
@@ -177,7 +177,7 @@ class FeedbackPage(Handler):
         feedback_query = Feedback.query(
             ancestor=feedback_key(feedback_name)).order(-datetime)
 
-        # Return a list of max 10 post objects. 
+        # Return a list of max 10 post objects.
         maximum_fetch_size = 10
         feedback_list = feedback_query.fetch(maximum_fetch_size)
         # [END query]
@@ -204,6 +204,7 @@ class FeedbackPage(Handler):
 
 
 class Guestbook(Handler):
+
     def post(self):
 
         feedback_name = self.request.get('feedback_name', DEFAULT_FEEDBACK_NAME)
@@ -240,7 +241,6 @@ class Guestbook(Handler):
 
 app = webapp2.WSGIApplication([('/', MainPage), ('/unitone', UnitOne), ('/unittwo', UnitTwo),
                                ('/unitthree', UnitThree), ('/unitfour', UnitFour), ('/unitfive', UnitFive),
-                               ('/unitsix', UnitSix), ('/unitseven', UnitSeven), ('/uniteight', UnitEight), 
-                               ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True) 
-
+                               ('/unitsix', UnitSix), ('/unitseven', UnitSeven), ('/uniteight', UnitEight),
+                               ('/feedback', FeedbackPage), ('/sign', Guestbook)], debug = True)
 

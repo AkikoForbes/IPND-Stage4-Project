@@ -3,61 +3,62 @@
 {% block content %}
 
 <dir class="buffer" id="form-buffer">
-	<fieldset>
-		<legend>Your Feedback</legend>
-			<div>
-				You are logged in as:
-				<span class="login-status">
-					{% if user %}
-						{{ user.email() }}
-					{% else %}
-						Anonymous
-					{% endif %}
-				</span>
-				<a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>
-			</div>
-			<hr>
-			Please leave your feedback here. I would love to hear what you think about my website:)
-			<form id="form_content" action="/sign?feedback_name={{ feedback_name }}" method="post">
-				<div><textarea id="content" name="content" rows="3" cols="60"></textarea></div>
-				<div><input type="submit" value="Leave Feedback"></div>
-				{% if error %}
-				<span class="notification" id="error">{{ error }}</span>
-				{% endif %}
-			</form>
-	</fieldset>	
+    <fieldset>
+        <legend>Your Feedback</legend>
+            <div>
+                You are logged in as:
+                <span class="login-status">
+                    {% if user %}
+                        {{ user.email() }}
+                    {% else %}
+                        Anonymous
+                    {% endif %}
+                </span>
+                <a id="login-logout" href="{{ url|safe }}">{{ url_linktext }}</a>
+            </div>
+            <hr>
+            Please leave your feedback here. I would love to hear what you think about my website:)
+            <form id="form_content" action="/sign?feedback_name={{ feedback_name }}" method="post">
+                <div><textarea id="content" name="content" rows="3" cols="60"></textarea></div>
+                <div><input type="submit" value="Leave Feedback"></div>
+                {% if error %}
+                <span class="notification" id="error">{{ error }}</span>
+                {% endif %}
+            </form>
+    </fieldset> 
 </dir>
 
 
 {% if success %}
-	<blockquote>
-		<span class="notification" id="success">{{ success }}</span>
-	</blockquote>
+    <blockquote>
+        <span class="notification" id="success">{{ success }}</span>
+    </blockquote>
 {% endif %}
 
 <div class="buffer">
-	<table>
-		<caption>Feedback</caption>
-		<tr><th>Who</th><th>When</th><th>What</th></tr>
-		{% if feedback_list %}
-			{% for feedback in feedback_list %}
-				<tr>
-					<td id="author">
-					{% if feedback.author %}
-						{{ feedback.author.email }}
-							{% if user and user.user_id() == feedback.author.identity %}
-								(You)
-							{% endif %}
-					{% else %}
-						Anonymous Author
-					{% endif %}			
-					</td>
-					<td id="datetime">{{ feedback.datetime|datetimeformat }}</td>
-					<td id="content">{{ feedback.content }}</td>
-				</tr>
-			{% endfor %}
-		{% endif %}
-	</table>
+    <table>
+        <caption>Feedback</caption>
+        <tr><th>Who</th><th>When</th><th>What</th></tr>
+        {% if feedback_list %}
+            {% for feedback in feedback_list %}
+                <tr>
+                    <td id="author">
+                    {% if feedback.author %}
+                        {{ feedback.author.email }}
+                            {% if user and user.user_id() == feedback.author.identity %}
+                                (You)
+                            {% endif %}
+                    {% else %}
+                        Anonymous Author
+                    {% endif %}         
+                    </td>
+                    <td id="datetime">{{ feedback.datetime|datetimeformat }}</td>
+                    <td id="content">{{ feedback.content }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
 </div>
 
 {% endblock %}
+

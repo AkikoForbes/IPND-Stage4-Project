@@ -1,19 +1,10 @@
 * {
-	-webkit-box-sizing: border-box; 
- 	-moz-box-sizing: border-box; 
- 	-ms-box-sizing: border-box; 
- 	box-sizing: border-box; 
-} 
-
-/*Use the code blow to visualize the boxes and the HTML structure when you check your code.*/
-
-/** {
-	margin: 4px;
-	border: red solid 2px;
-	background-color: rgba(0,0,0,0.15);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
 }
-*/
- 
+
 body {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-size: 22px;
@@ -109,7 +100,7 @@ h1 {
 
 .introduction a {
     background-color: #ffd3d8;
-    color: #18191a;   
+    color: #18191a;
 }
 
 .check-notes {
@@ -157,7 +148,7 @@ h3 {
 
 .container {
     margin-right: 10px;
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
 }
 
 li {
@@ -288,3 +279,4 @@ footer {
     font-style: italic;
     margin-top: 15px;
 }
+

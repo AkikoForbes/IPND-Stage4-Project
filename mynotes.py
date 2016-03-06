@@ -3,7 +3,7 @@ unit1 = {
     "concepts": {
         "concept1": {
             "concept_title": "Networks",
-            "concept_description": "Networks have at least 3 entities and every entity can communicate even with indirectly connected entities." 
+            "concept_description": "Networks have at least 3 entities and every entity can communicate even with indirectly connected entities."
         },
         "concept2": {
             "concept_title": "Latency & Bandwidth",
@@ -16,7 +16,7 @@ unit1 = {
         "concept3": {
             "concept_title": "Client / Server / Protocol",
             "concept_description": "Your computer(= Client) is connected to a server through a network called the Internet. When your browser requests a page, the server sends back the requested page. For the web, a protocol gives rules about how a client and a server talk to each other (Hypertext Transfer Protocol(HTTP)).",
-            "image": "http://i.imgur.com/0vPATU6.png" 
+            "image": "http://i.imgur.com/0vPATU6.png"
         }
     }
 }
@@ -110,7 +110,7 @@ unit4 = {
             "concept_title": "The Modulus Operator",
             "concept_description": "The modulus operator '%' returns the reminder of integer division.",
             "code": """<Number> % <Modulus> ---> <Reminder>
-   14    %    12     --->    2""",
+   14    %    12     --->    2"""
         },
         "concept2": {
             "concept_title": "Dictionaries",
@@ -134,7 +134,7 @@ print trip_dictionary["Peru"]
 # to display food to eat in New Zealand
 print trip_list[2][2]
 print trip_dictionary["New Zealand"]["food"]"""
-        }       
+        }
     }
 }
 
@@ -190,7 +190,7 @@ unit6 = {
     "unit_title": "Unit 4.6: Validation",
     "concepts": {
         "concept1": {
-            "concept_title": "Why Input Validation is Important?",
+            "concept_title": "Why is Input Validation Important?",
             "concept_description": "When a user enters bad input, varidating input will prevent our web application from being hacked. Make sure to validate data on the SERVER side as it's more secure than one on the Client side. If you are using Python and HTML template for making a web app, validation should occur in a python file. If you get an error, redirect to the form without storing invalid data to a database.",
         },
         "concept2": {
