@@ -28,7 +28,7 @@
                         </div>
                         {% endif %}
                         {% if unit["concepts"][concept]["link"] %}
-                        <a href="{{ unit["concepts"][concept]["link"]["url"] }}">{{ unit["concepts"][concept]["link"]["link_title"] }}</a>
+                        <a href="{{ unit["concepts"][concept]["link"]["url"] }}" target="_blank">{{ unit["concepts"][concept]["link"]["link_title"] }}</a>
                         {% endif %}
                     </div>
                     {% if unit["concepts"][concept]["image"] %}
@@ -45,7 +45,7 @@
                             {% autoescape false %}
                             {{ form["form_example"] }}
                             {% endautoescape %}
-                        </form>             
+                        </form>
                         </div>
                         {%endfor %}
                     {% endif %}
